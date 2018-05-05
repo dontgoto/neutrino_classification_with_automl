@@ -1,0 +1,178 @@
+\section{Einleitung}
+\label{sec:Theorie}
+\subsection{Ziel des Versuchs}
+\label{sec:Ziel}
+Ziel des Versuchs ist es anhand simulierter Daten des Ice-Cube-Experiments die relevanten Signale mittels maschinellen Lernens vom Untergrund zu trennen.
+Hierbei liegt der Fokus auf den einzelnen Schritten, die für die Trennung der Daten durchlaufen werden.
+Es sollen so Grundkenntnisse über das maschinelle Lernen am Ice-Cube-Experiment aufgezeigt werden.
+
+\subsection{Astrophysikalische Grundlagen}
+\label{sec:GrundlagenATP}
+Im Jahre 1912 wurde erstmals von Viktor Heß die Höhenstrahlung entdeckt.
+Seitdem ist bekannt, dass nicht nur Photonen in die Atmosphäre der Erde eindringen, sondern auch Protonen und schwerere Kerne.
+Dies wird als Höhenstrahlung bzw. geladene kosmische Strahlung bezeichnet.
+Bei der geladenen Strahlung werden Energien von bis zu $\SI{e20}{\electronvolt}$ beobachtet und sie folgt annähernd einem Potenzgesetz
+\begin{align*}
+	\frac{\mathrm{d}\theta}{\mathrm{d}E} = \theta _0 E^\gamma
+\end{align*}
+mit $\gamma \approx -\SI{2.7}{}$ als dem spektralen Index.
+Geladene kosmische Strahlung besteht zum Großteil aus Protonen und geladenen Kernen und wird durch (extra)galaktische Magnetfelder abgelenkt.
+Deswegen lässt sich die Quelle dieser Strahlung nicht ermitteln.
+Jedoch sollten Quellen die Hadronen beschleunigen, auch Neutrinos und hochenergetische Photonen erzeugen.
+Da Neutrinos im Gegensatz zu hadronischen Teilchen ungeladen sind und einen sehr kleinen Wirkungsquerschnitt besitzen, werden sie nicht von Magnetfeldern abgelenkt und können durch die sehr selten auftretenden Wechselwirkungen zu einem deutlich größeren Anteil Materie durchdringen.
+Neutrinos zeigen somit nahezu direkt auf ihren Ursprungsort zurück. 
+%Der Spektrale Index von Neutrinos wird mit $\gamma \approx -2$ angegeben.
+
+\subsection{Das IceCube-Experiment}
+\label{sec:eiswürfel}
+Das IceCube-Experiment am geografischen Südpol dient zur Detektion hochenergetischer Neutrinos.
+Es besteht aus drei Stationen: IceTop, dem In-Ice-Array und DeepCore.
+Das In-Ice-Array und DeepCore bestehen aus 86 in Eis eingeschmolzenen Kabeln, an denen in einer Eistiefe von $\SI{1450}{m}$ bis $\SI{2450}{m}$ insgesamt $\SI{5160}{}$ Photoelektronenvervielfachern angebracht sind.
+Davon befinden sich sieben Kabel mit einem geringeren Abstand aneinander und bilden so den DeepCore.
+DeepCore besitzt eine untere Energieschwelle von $\SI{10}{\giga\electronvolt}$.
+Die Energieschwelle des restlichen In-Ice-Arrays liegt bei $\SI{100}{\giga\electronvolt}$.
+An der Oberfläche des Eises befindet sich das Luftschauer-Experiment IceTop.
+Hier werden die Teilchen in lichtdichten Eistanks über ihr Tscherenkowlicht detektiert.
+Da sich IceTop an der Oberfläche befindet kann diese Station als Veto für die Neutrinodetektion verwendet werden, weil hier hauptsächlich kosmische Strahlung und Teilchen aus Luftschauern in Wechselwirkung treten.
+So ist es beispielsweise auch möglich Neutrinos vom Südhimmel zu detektieren.
+Tscherenkowlicht entsteht, wenn sich geladene Teilchen schneller als Lichtgeschwindigkeit in einem Medium bewegen.
+Im Eis werden die Neutrinos der Flavour $\ell$ mittels Sekundärteilchen detektiert.
+Diese entstehen durch die zwei folgenden Wechselwirkungen mit Kernen $A$ im Eis und restlichen Reaktionsprodukten $X$:
+\begin{align*}
+	\nu_\ell(\bar{\nu_\ell}) + A \rightarrow \ell^{\pm} + X \\
+	\nu_\ell + A \rightarrow \nu_\ell + X
+\end{align*}
+Da Myonen eine Vergleichsweise lange Lebensdauer besitzen werden diese und ihre Erzeuger, die Myon-Neutrinos, am häufigsten detektiert.
+Myonen aus Neutrinointeraktionen sind im Folgenden das Signal.
+Jedoch werden Myonen auch in großer Zahl durch Wechselwirkung geladener kosmischer Strahlung in der Atmosphäre erzeugt; diese sind der Untergrund.
+\begin{align*}
+	p + A \rightarrow \pi^+/K^+ + X, \\
+	\pi^+/K^+\rightarrow \mu + \nu_{\mu}.
+\end{align*}
+Myonen aus Luftschauern treten ca. $\SI{e6}{}$-mal so häufig auf wie Myonen aus Myon-Neutrinos.
+Da Myonen im Gegensatz zu Neutrinos nicht die Erde durchqueren können, muss es sich bei Ereignissen deren rekonstruierte Richtung nicht vom Südhimmel kommt um Neutrinos oder fehlrekonstruierte kosmische Myonen handeln.
+Wird so ein Schnitt am Zenitwinkel der rekonstruierten Richtung durchgeführt bleiben noch etwa $\SI{e3}{}$-mal so viele Untergrund- wie Signalereignisse.
+Um diese vom Signal zu trennen werden Methoden des maschinellen Lernens verwendet.
+
+\section{Methoden des maschinellen Lernens}
+\label{sec:mashlearning}
+
+Um die relevanten Signale von den Untergrunddaten zu trennen werden in diesem Versuch Methoden des maschinellen Lernens verwendet.
+Der typische Ablauf für die Prozessierung simulierter Daten sieht wie folgt aus:
+\begin{description}
+
+\item[Vorbereitung der Daten] Zu Beginn werden die Daten für die weiteren Schritte vorbereitet.
+\item[Attributselektion] Es werden die für die Lerner relevanten Attribute mit einem Algorithmus herausgesucht. 
+Dies verringet die Rechenzeit in den folgenden Schritten drastisch.
+Die Attributselektion wird hiernach mit dem Jaccard-Index auf die Stabilität gegen statistische Schwankungen im Lerner untersucht.
+\item[Multivariate Selektion] Die Lernen werden auf die vorbereiteten Datensätze trainiert. 
+Der trainierte Lerner lässt sich danach auf andere Datensätze anwenden.
+\item[Überprüfen der prozessierten Daten] Zum Schluss werden die bearbeiteten Daten auf ihre Genauigkeit geprüft. 
+Hierzu werden Qualitätsparameter eingeführt und die Lerner mittels Kreuzvalidierung getestet.
+
+\end{description}
+
+Im Folgenden werden diese Schritte und einige der in diesem Versuch verwendeten Methoden näher erläutert.
+
+\subsection{Attributsselektion mittels mRMR}
+\label{sec:mRMR}
+
+Bei der Attributsauswahl mittels minimum Redundancy Maximum Relevance (mRMR) wird die Wahrscheinlichkeitsverteilung der einzelnen Attribute betrachtet und ist somit nicht von einem spezifischen Lerner abhängig.
+Hierzu wird der wechselseitige Informationsgehalt zweier Attribute $x$, $y$ benutzt:
+\begin{align*}
+	I(x,y)=\int p(x,y)\log \left( \frac{p(x,y)}{p(x)p(y)}  \right)\textrm{d}x\textrm{d}y
+\end{align*}
+Hierbei bezeichnen $p(x),\, p(y)$ und $p(x,y)$ die Wahrscheinlichkeitsdichtefunktionen der betreffenden Attribute. 
+Die Attribute werden hierbei vom mRMR-Algorithmus so ausgewählt, dass sie möglichst stark mit dem Zielattribut, aber untereinander möglichst wenig korreliert sind.
+
+\subsection{Stabilitätsanalyse mit dem Jaccard-Index}
+\label{sec:jaccard}
+Der Jaccard-Index in ein Maß für die Ähnlichkeit zweier Mengen.
+Um ihn zu berechnen teilt man die Anzahl der gemeinsamen Elemente (Schnittmenge) durch die Größe der Vereinigungsmenge:
+\begin{align*}
+	J(A,B) = \frac{\vert A \cap B \vert}{\vert A \cup B \vert }
+\end{align*}
+Dies wird $l$-mal auf $l$ Teilmengen des Datensatzes angewendet. 
+Somit lässt sich die Ähnlichkeit der verschiedenen Selektionen beurteilen.
+Hierbei beschreibt ein Wert um $\SI{1.0}{}$ eine maximal stabile Attributauswahl gegen statistische Schwankungen.
+\begin{align*}
+	\hat{J} = \frac{2}{l(l-1)} \sum_{i=1}^l \sum_{j=i+1}^l J(F_i,F_j)
+\end{align*}
+
+
+\subsection{Multivariate Lerner}
+\label{sec:multilearn}
+Die Verwendung von multivariaten Lernern bietet den Vorteil, dass diese auch Korrelationen zwischen den Variablen beachten.
+
+\subsubsection{Random Forest}
+\label{sec:rndforest}
+Der Random Forest Lerner basiert auf binären Entscheidungsbäumen. 
+Jeder Entscheidungsbaum erhält nur eine Teilmenge der vorhandenen Attribute oder Ereignisse, womit die Korrelation der Bäume untereinander verkleinert wird.
+Beim erstellen eines solchen Baums werden für jedes Ereignis an den Knoten die Werte eines Attributs betrachtet. 
+Es wird durch Minimieren oder Maximieren eines Optimierungskriteriums ein Schnitt in diesem Attribut gesetzt.
+Diese Schnitte werden wiederholt, bis die maximale Tiefe des Baums erreicht ist.
+Der letzte Attributsschnitt bestimmt zu welcher Klasse ein Ereignis zugeordnet wird.
+Beim vorliegenden Zweiklassenproblem dieses Versuchs ist dies entweder Signal oder Untergrund, was als 1 oder 0 ausgedrückt werden kann.
+Um den Effekt des Übertrainings zu minimieren, werden $N$ Bäume angelegt und folgend über diese zu einer Konfidenz gemittelt. 
+Die Konfidenz (c) des Random Forest-Algorithmus wird definiert als das Mittel über der Entscheidungen $P_i$ der $N$ Teilbäume:
+\begin{align*}
+	c= \frac{1}{N}\sum_{i=1}^NP_i, P_i \in \{0,1\}
+\end{align*}
+
+\subsubsection{Naive Bayes-Algorithmus}
+\label{sec:dernaivebayes}
+
+Der Naive-Bayes-Algorithmus basiert auf dem Satz von Bayes.
+Dies ist ein mathematischer Satz der Wahrscheinlichkeitstheorie, der die Berechnung bedingter Wahrscheinlichkeiten beschreibt.
+Die bedingte Wahrscheinlichkeit $P(A \vert B)$ ist die (bedingte) Wahrscheinlichkeit, dass Ereignis $A$ eintritt, unter der Bedingung, dass $B$ bereits eingetreten ist.
+Das Bayes'sche Theorem sagt aus:
+\begin{align*}
+	p(A \vert B) = \frac{p(B\vert A)p(A)}{p(B)}
+\end{align*}
+In diesem Fall beschreibt A die Klassenzugehörigkeit (Signal $A$ oder Untergrund $\bar{A}$) und B ein Attribut. 
+Somit lässt sich folgender Ausdruck Formulieren:
+\begin{align*}
+	Q = \frac{p(A \vert B)}{p(\bar{A}\vert B)}=\frac{p(B \vert A)p(A)}{p(B \vert \bar{A})p(\bar{A})}
+\end{align*}
+Dieser Ausdruck nimmt einen Wert von 1 an, wenn das Ereignis mit höherer Wahrscheinlichkeit ein Signal ist.
+Für mehrere Attribute wird der Ausdruck zu:
+\begin{align*}
+	Q = \frac{p(A \vert B_1,...,B_n)}{p(\bar{A}\vert B_1,...,B_n)}=\prod_{i=1}^n \frac{p(B_i \vert A)}{p(B_i \vert \bar{A})}
+\end{align*}
+
+\subsection{Gradient Boosting}
+\label{sec:gradient}
+
+Gradient Boosting ist ein iterativer Lerner der auf Entscheidungsbäumen basiert.
+Er erzeugt in jedem Iterationsschritt einen neuen Lerner, der eine möglichst geringe Abweichung zum idealen Modell besitzen soll.
+Dies geschieht durch Minimierung einer Kostenfunktion, welche anhand der Start-/ und Zielwerte, sowie dem vorangegangenen Lerner, ein Maß für die Abweichung der durch den Lerner errechneten Zielwerte zu den realen Zielwerten beschreibt.
+Diese Lerner können alleine betrachtet als schwach bezeichnet werden und stellen noch kein gutes Modell dar.
+Beim Gradient Boosting wird mit den in den Iterationsschritten berechneten Gewichten und zugehörigen schwachen Lernern eine gewichtete Summe gebildet.
+Das Ergebnis dieser kann somit als ein starker Lerner bezeichnet werden.
+
+
+
+%testrebase
+
+\subsection{Qualitätsparameter}
+\label{sec:quali}
+Um die Güte der Entscheidungen eines Lerners zu berechnen werden Qualitätsparameter eingeführt.
+\begin{align}
+    \textrm{Reinheit  } p &= \frac{\mathrm{tp}}{\mathrm{tp}+\mathrm{fp}} \\
+    \textrm{Effizienz  } r &= \frac{\mathrm{tp}}{\mathrm{tp}+\mathrm{fn}}
+\end{align}
+Mit dem richtig als Signal klassifizierten Ereignissen ($\mathrm{tp}$, true positive), den richtig als Untergrund klassifizierten Ereignissen ($\mathrm{tn}$, true negative) und der Anzahl der fälschlich als Signal ($\mathrm{fp}$, false positive) bzw. fälschlich als Untergrund ($\mathrm{fn}$, false negative) klassifizierten Ereignisse.
+
+
+
+
+
+
+%\begin{figure}
+    %\begin{subfigure}{.5\textwidth}
+%  \centering
+%  \includegraphics[width=0.80\textwidth]{}
+%  \caption{.}
+%  \label{fig1}
+%\end{subfigure}
+%\end{figure}

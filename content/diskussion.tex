@@ -1,0 +1,10 @@
+\section{Diskussion}
+\label{sec:Diskussion}
+
+In dieser Separation zeigen alle Lerner, selbst der Naive-Bayes, eine hohe Trennkraft, was für eine sehr gute Konstruktion der Attribute spricht.
+Weiter zeigt sich, dass Gradient Boosted Trees für die vorliegenden Daten einem Random Forest überlegen sind, so lange nicht die bei einer Konfidenz von 1.0 auftretende höchstmögliche Reinheit gefordert wird.
+
+Das auto-sklearn Ensemble aus 20 Gradient Boosted Tree Lernern zeigt trotz seines höheren Rechenaufwands nur geringe Abweichungen von der einfachen GBT Implementierung in Rapidminer.
+Kann RapidMiner ohne weiteres Verwendet werden ist auto-sklearn den damit verbundenen Mehraufwand nicht wert.
+Es bleibt jedoch offen, ob die Separation von auto-sklearn durch mehr Optimierungszeit verbesserbar ist, da hier etwa die hälfte der 27 Stunden gebraucht wurde um von verschiedenen Lernern auf ein Ensemble von Gradient Boosted Trees zu kommen, deren Einstellungen noch weiter angepasst werden können.
+

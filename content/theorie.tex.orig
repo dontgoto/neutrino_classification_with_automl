@@ -1,0 +1,233 @@
+\section{Einleitung}
+\label{sec:Theorie}
+\subsection{Ziel des Versuchs}
+\label{sec:Ziel}
+Ziel des Versuchs ist es anhand simulierter Daten des Ice-Cube-Experiments die relevanten Signale mittels maschinellem Lernen vom Untergrund zu trennen.
+Hierbei liegt der Fokus auf den einzelnen Schritten die für die Trennung der Daten durchlaufen werden;
+es sollen so Grundkenntnisse über das maschinelle Lernen am Ice-Cube-Experiment aufgezeigt werden.
+
+\subsection{Astrophysikalische Grundlagen}
+\label{sec:GrundlagenATP}
+Im Jahre 1912 wurde erstmals von Viktor Heß die Höhenstrahlung entdeckt.
+Seitdem ist bekannt, dass nicht nur Photonen in die Atmosphäre der Erde eindringen, sondern auch Protonen und schwerere Kerne.
+Dies wird als Höhenstrahlung bzw. geladene kosmische Strahlung bezeichnet.
+Bei der geladenen Strahlung werden Energien von bis zu $\SI{e20}{\electronvolt}$ beobachtet und sie folgt annähernd einem Potenzgesetz
+\begin{align}
+	\frac{\mathrm{d}\theta}{\mathrm{d}E} = \theta_0 E^{\gamma}
+\end{align}
+mit $\gamma \approx -\si{2.7}$ als dem spektralen Index.
+Da geladene kosmische Strahlung jedoch zum Großteil aus Protonen und geladenen Kernen besteht, werden diese durch extragalaktische Magnetfelder abgelenkt.
+Deswegen lässt sich die Quelle dieser Strahlung nicht ermitteln.
+Jedoch sollten Quellen die Hadronen beschleunigen, auch Neutrinos und hochenergetische Photonen erzeugen.
+Da Neutrinos im Gegensatz zu hadronischen Teilchen ungeladen sind und einen sehr kleinen Wirkungsquerschnitt besitzen, werden sie nicht von Magnetfeldern abgelenkt und können durch die sehr selten auftretenden Wechselwirkungen zu einem deutlich größeren Anteil Materie durchdringen.
+<<<<<<< 3087a1d4b1b3d09e6604d26dad36d669112e6fb3
+Neutrinos zeigen somit nahezu direkt auf ihren Ursprungsort zurück.
+Der Spektrale Index von Neutrinos wird mit $\gamma \approx -2$ angegeben.
+||||||| merged common ancestors
+Neutrinos zeigen somit nahezu direkt auf ihren Ursprungsort zurück. 
+Der Spektrale Index von Neutrinos wird mit $\gamma \approx -2$ angegeben.
+=======
+Neutrinos zeigen somit nahezu direkt auf ihren Ursprungsort zurück. 
+%Der Spektrale Index von Neutrinos wird mit $\gamma \approx -2$ angegeben.
+>>>>>>> asuwertung so weit fertig diskussion auch
+
+\subsection{Das IceCube-Experiment}
+\label{sec:eiswürfel}
+Das IceCube-Experiment am geografischen Südpol dient zur Detektion hochenergetischer Neutrinos.
+Es besteht aus drei Stationen: IceTop, dem In-Ice-Array und Deep-Core.
+%Das In-Ice-Array und DeepCore bestehen aus 86 in Eis eingeschmolzenen Kabeln, an denen in einer Eistiefe von $\SIrange{1450}{2450}{m}$ insgesamt $\SI{5160}$ Photoelektronenvervielfachern angebracht sind.
+Davon befinden sich sieben Kabel mit einem geringeren Abstand aneinander und bilden so den Deep-Core.
+Dieser besitzt eine untere Energieschwelle von $\SI{10}{\giga\electronvolt}$.
+Die Energieschwelle des restlichen In-Ice-Arrays liegt bei $\SI{100}{\giga\electronvolt}$.
+An der Oberfläche des Eises befindet sich das Luftschauer-Experiment IceTop.
+Hier werden die Teilchen über lichtdichte Eistanks über ihr Tscherenkowlicht detektiert.
+Da sich IceTop an der Oberfläche befindet kann diese Station als Veto für die Neutrinodetektion verwendet werden, weil hier hauptsächlich kosmische Strahlung in Wechselwirkung tritt.
+So ist es beispielsweise auch möglich Neutrinos vom Südhimmel zu detektieren.
+Tscherenkowlicht entsteht, wenn sich geladene Teilchen schneller als Lichtgeschwindigkeit in einem Medium bewegen.
+Im Eis werden die Neutrinos der Flavour $\ell$ mittels Sekundärteilchen detektiert.
+Diese entstehen durch die zwei folgenden Wechselwirkungen mit Kernen $A$ im Eis und restlichen Reaktionsprodukten $X$:
+\begin{align}
+	\nu_\ell(\bar{\nu_\ell}) + A \rightarrow \ell^{\pm} + X \\
+	\nu_\ell + A \rightarrow \nu_\ell + X
+\end{align}
+Da Myonen eine Vergleichsweise lange Lebensdauer besitzen werden diese und ihre Erzeuger, die Myon-Neutrinos, am häufigsten detektiert.
+Myonen aus Neutrinointeraktionen sind im Folgenden das Signal.
+Jedoch werden Myonen auch in großer Zahl durch Wechselwirkung geladener kosmischer Strahlung in der Atmosphäre erzeugt; diese sind der Untergrund.
+\begin{align}
+	p + A \rightarrow \pi^+/K^+ + X, \\
+	\pi^+/K^+\rightarrow \mu + \nu_{\mu}.
+\end{align}
+Myonen aus Luftschauern treten ca. $\SI{e6}{}$-mal so häufig auf wie Myonen aus Myon-Neutrinos.
+Da Myonen im Gegensatz zu Neutrinos nicht die Erde durchqueren können, muss es sich bei Ereignissen deren rekonstruierte Richtung nicht vom Südhimmel kommt um Neutrinos oder fehlrekonstruierte kosmische Myonen handeln.
+Wird so ein Schnitt am Zenithwinkel der rekonstruierten Richtung durchgeführt bleiben noch etwa $\SI{e3}{}$-mal so viele Untergrund- wie Signalereignisse.
+Um diese vom Signal zu trennen werden Methoden des maschinellen Lernens verwendet.
+
+\section{Methoden des maschinellen Lernens}
+\label{sec:mashlearning}
+
+Um die relevanten Signale von den Untergrunddaten zu trennen werden in diesem Versuch Methoden des maschinellen Lernens verwendet.
+Der typische Ablauf für die Prozessierung simulierter Daten sieht wie folgt aus:
+\begin{description}
+
+\item[Vorbereitung der Daten] Zu Beginn werden die Daten für die weiteren Schritte vorbereitet.
+\item[Attributselektion] Es werden die für die Lerner relevanten Attribute mit einem Algorithmus herausgesucht. Dies verringet die Rechenzeit in den folgenden Schritten drastisch.
+Die Attributselektion wird hiernach mit dem Jaccard-Index auf die Stabilität gegen statistische Schwankungen im Lerner untersucht.
+\item[Multivariate Selektion] Die Lernen werden auf die vorbereiteten Datensätze trainiert. Der trainierte Lerner lässt sich danach auf andere Datensätze anwenden.
+\item[Überprüfen der prozessierten Daten] Zum Schluss werden die bearbeiteten Daten auf ihre Genauigkeit geprüft. Hierzu werden Qualitätsparameter eingeführt und die Lerner mittels Kreuzvalidierung getestet.
+
+\end{description}
+
+Im Folgenden werden diese Schritte und einige der in diesem Versuch verwendeten Methoden näher erläutert.
+
+\subsection{Attributsselektion mittels mRMR}
+\label{sec:mRMR}
+
+Bei der Attributsauswahl mittels minimum Redundance Maximum Relevance (mRMR) wird die Wahrscheinlichkeitsverteilung der einzelnen Attribute betrachtet und ist somit nicht von einem spezifischen Lerner abhängig.
+Hierzu wird der Informationsgehalt zweier Attribute $x$, $y$ benutzt:
+\begin{align}
+	I(x,y)=\int p(x,y)\log \left( \frac{p(x,y)}{p(x)p(y)}  \right)\textrm{d}x\textrm{d}y
+\end{align}
+<<<<<<< 3087a1d4b1b3d09e6604d26dad36d669112e6fb3
+
+Hierbei bezeichnen $p(x),\, p(y)$ und $p(x,y)$ die Wahrscheinlichkeitsdichtefunktionen der betreffenden Variablen.
+Die Attribute werden hierbei vom mRMR-Algotithmus so ausgewählt, dass sie möglichst stark mit dem Zielattribut, aber möglichst wenig untereinander korreliert sind.
+||||||| merged common ancestors
+
+Hierbei bezeichnen $p(x),\, p(y)$ und $p(x,y)$ die Wahrscheinlichkeitsdichtefunktionen der betreffenden Variablen. 
+Die Attribute werden hierbei vom mRMR-Algotithmus so ausgewählt, dass sie möglichst stark mit dem Zielattribut, aber möglichst wenig untereinander korreliert sind.
+=======
+Hierbei bezeichnen $p(x),\, p(y)$ und $p(x,y)$ die Wahrscheinlichkeitsdichtefunktionen der betreffenden Attribute. 
+Die Attribute werden hierbei vom mRMR-Algorithmus so ausgewählt, dass sie möglichst stark mit dem Zielattribut, aber untereinander möglichst wenig korreliert sind.
+>>>>>>> asuwertung so weit fertig diskussion auch
+
+\subsection{Stabilitätsanalyse mit dem Jaccard-Index}
+\label{sec:jaccard}
+Der Jaccard-Index in ein Maß für die Ähnlichkeit zweier Mengen.
+Um ihn zu berechnen teilt man die Anzahl der gemeinsamen Elemente (Schnittmenge) durch die Größe der Vereinigungsmenge:
+\begin{align}
+	J(A,B) = \frac{\vert A \cap B \vert}{\vert A \cup B \vert}
+\end{align}
+<<<<<<< 3087a1d4b1b3d09e6604d26dad36d669112e6fb3
+
+Dies wird $l$-mal auf $l$ Teilmengen des Datensatzes angewendet.
+||||||| merged common ancestors
+
+Dies wird $l$-mal auf $l$ Teilmengen des Datensatzes angewendet. 
+=======
+Dies wird $l$-mal auf $l$ Teilmengen des Datensatzes angewendet. 
+>>>>>>> asuwertung so weit fertig diskussion auch
+Somit lässt sich die Ähnlichkeit der verschiedenen Selektionen beurteilen.
+Hierbei beschreibt ein Wert um $\SI{1.0}$ eine stabile Attributauswahl gegen statistische Schwankungen.
+\begin{align}
+	\hat{J} = \frac{2}{l(l-1)} \sum_{i=1}^l \sum_{j=i+1}^l J(F_i,F_j)
+\end{align}
+
+
+\subsection{Multivariate Lerner}
+\label{sec:multilearn}
+Die Verwendung von multivariaten Lernern bietet den Vorteil, dass diese auch Korrelationen zwischen den Variablen beachten.
+
+\subsubsection{Random Forest}
+\label{sec:rndforest}
+<<<<<<< 3087a1d4b1b3d09e6604d26dad36d669112e6fb3
+Der Random Forest Lerner basiert auf dem binären Entscheidungsbaum.
+Hierbei wird an jedem Knoten ein durch Training gesetzter Schnitt gesetzt.
+Ab einer bestimmten erreichten Tiefe des Baums ist ein Ereignis entweder als Signal oder als Untergrund klassifiziert.
+Um den Effekt des Übertrainierens zu minimieren, werden $N$ Bäume angelegt und folgend über diese gemittelt.
+Die Entscheidung $c$ (Confidence) des Random Forest-Algorithmus wird definiert als das Mittel über die Entscheidung $P_i$ der $N$ Teilbäume:
+||||||| merged common ancestors
+Der Random Forest Lerner basiert auf dem binären Entscheidungsbaum. 
+Hierbei wird an jedem Knoten ein durch Training gesetzter Schnitt gesetzt. 
+Ab einer bestimmten erreichten Tiefe des Baums ist ein Ereignis entweder als Signal oder als Untergrund klassifiziert.
+Um den Effekt des Übertrainierens zu minimieren, werden $N$ Bäume angelegt und folgend über diese gemittelt. 
+Die Entscheidung $c$ (Confidence) des Random Forest-Algorithmus wird definiert als das Mittel über die Entscheidung $P_i$ der $N$ Teilbäume:
+=======
+Der Random Forest Lerner basiert auf binären Entscheidungsbäumen. 
+Jeder Entscheidungsbaum erhält nur eine Teilmenge der vorhandenen Attribute oder Ereignisse um die Korrelation der Bäume untereinander zu minimieren.
+Beim erstellen eines solchen Baums werden für jedes Ereignis an den Knoten die Werte eines Attributs betrachtet. 
+Es wird durch minimieren oder maximieren eines Optimierungskriteriums ein Schnitt in diesem Attribute gesetzt.
+Diese Schnitte werden wieerholt, bis entweder die maximale Tiefe des Baums erreicht ist, oder keine weiteren Attribute mehr vorhanden sind.
+Der letzte Attributsschnitt bestimmt dann zu welcher Klasse ein Ereignis zugeordnet wird.
+Beim vorliegenden Zweiklassenproblem dieses Versuchs ist dies entweder Signal oder Untergrund, was als 1 oder 0 ausgedrückt werden kann.
+Um den Effekt des Übertrainings zu minimieren, werden $N$ Bäume angelegt und folgend über diese zu einer Konfidenz gemittelt. 
+Die Konfidenz (c) des Random Forest-Algorithmus wird definiert als das Mittel über der Entscheidungen $P_i$ der $N$ Teilbäume:
+>>>>>>> asuwertung so weit fertig diskussion auch
+\begin{align}
+	c= \frac{1}{N}\sum_{i=1}^NP_i, P_i \in \{0,1\}
+\end{align}
+
+\subsubsection{Naive Bayes-Algorithmus}
+\label{sec:dernaivebayes}
+
+Der naive Bayes-Algorithmus basiert auf dem Satz von Bayes.
+Dies ist ein mathematischer Satz der Wahrscheinlichkeitstheorie, der die Berechnung bedingter Wahrscheinlichkeiten beschreibt.
+Die bedingte Wahrscheinlichkeit $P(A \vert B)$ ist die (bedingte) Wahrscheinlichkeit, dass Ereignis $A$ eintritt, unter der Bedingung, dass $B$ bereits eingetreten ist.
+Das Baye'sche Theorem sagt aus:
+\begin{align}
+	p(A \vert B) = \frac{p(B\vert A)p(A)}{p(B)}
+\end{align}
+<<<<<<< 3087a1d4b1b3d09e6604d26dad36d669112e6fb3
+
+In diesem Fall beschreibt A die Klassenzugehörigkeit (Signal $A$ oder Untergrund $\bar{A}$) und B ein Attribut.
+||||||| merged common ancestors
+
+In diesem Fall beschreibt A die Klassenzugehörigkeit (Signal $A$ oder Untergrund $\bar{A}$) und B ein Attribut. 
+=======
+In diesem Fall beschreibt A die Klassenzugehörigkeit (Signal $A$ oder Untergrund $\bar{A}$) und B ein Attribut. 
+>>>>>>> asuwertung so weit fertig diskussion auch
+Somit lässt sich folgender Ausdruck Formulieren:
+\begin{align}
+	Q = \frac{p(A \vert B)}{p(\bar{A}\vert B)}=\frac{p(B \vert A)p(A)}{p(B \vert \bar{A})p(\bar{A})}
+\end{align}
+Dieser Ausdruck nimmt einen Wert von 1 an, wenn das Ereignis mit größer Wahrscheinlichkeit ein Signal ist.
+Für mehrere Attribute wird der Ausdruck zu:
+\begin{align}
+	Q = \frac{p(A \vert B_1,...,B_n)}{p(\bar{A}\vert B_1,...,B_n)}=\prod_{i=1}^n \frac{p(B_i \vert A)}{p(B_i \vert \bar{A})}
+\end{align}
+
+<<<<<<< 3087a1d4b1b3d09e6604d26dad36d669112e6fb3
+
+\subsection{Gradient Boosting}
+\label{sec:gradient}
+
+Gradient Boosting ist ein iterativer Lerner der auf Entscheidungsbäumen basiert.
+Er erzeugt in jedem Iterationsschritt einen neuen Lerner, der eine möglichst geringe Abweichung zum idealen Modell besitzen soll.
+Dies geschieht durch minimierung einer Kostenfunktion, welche anhand der Start-/ und Zielwerte, sowie dem vorangegangenen Lerner, ein Maß für die Abweichung der durch den Lerner errechneten Zielwerte zu den realen Zielwerten beschreibt.
+Diese Lerner können alleine betrachtet jedoch als schwach bezeichnet werden und stellen noch kein gutes Modell dar.
+Beim Gradient Boosting wird mit den in den Iterationsschritten berechneten Gewichten und zugehörigen schwachen Lernern eine gewichtete Summe gebildet;
+Das Ergebnis dieser kann somit als ein starker Lerner bezeichnet werden.
+
+
+
+
+
+||||||| merged common ancestors
+=======
+\subsubsection{Gradient Boosting}
+
+
+
+
+>>>>>>> asuwertung so weit fertig diskussion auch
+\subsection{Qualitätsparameter}
+\label{sec:quali}
+Um die Güte der Entscheidungen eines Lerners zu berechnen werden Qualitätsparameter eingeführt.
+\begin{align}
+	\textrm{Reinheit  } p &= \frac{tp}{tp+fp} \\
+	\textrm{Effizienz  } r &= \frac{tp}{tp+fn}
+\end{align}
+Mit dem richtig als Signal klassifizierten Ereignissen ($tp$, true positive), den richtig als Untergrund klassifizierten Ereignissen ($tn$, true negative) und der Anzahl der fälschlich als Signal ($fp$, false positive) bzw. fälschlich als Untergrund ($fn$, false negative) klassifizierten Ereignisse.
+
+
+
+
+
+
+%\begin{figure}
+    %\begin{subfigure}{.5\textwidth}
+%  \centering
+%  \includegraphics[width=0.80\textwidth]{}
+%  \caption{.}
+%  \label{fig1}
+%\end{subfigure}
+%\end{figure}

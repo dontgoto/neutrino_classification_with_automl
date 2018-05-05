@@ -1,0 +1,372 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.7 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \sortlist[entry]{nty/global/}
+    \entry{mrmre}{article}{}
+      \name{author}{6}{}{%
+        {{hash=67222f73c93d5fe8c0e626a5166fb41a}{%
+           family={{De Jay}},
+           family_i={D\bibinitperiod},
+           given={Nicolas},
+           given_i={N\bibinitperiod}}}%
+        {{hash=d26763c59bb3e508d93d4e48010f0c8b}{%
+           family={Papillon-Cavanagh},
+           family_i={P\bibinithyphendelim C\bibinitperiod},
+           given={Simon},
+           given_i={S\bibinitperiod}}}%
+        {{hash=ca42db8bd2e5f4493864685a40326efb}{%
+           family={Olsen},
+           family_i={O\bibinitperiod},
+           given={Catharina},
+           given_i={C\bibinitperiod}}}%
+        {{hash=ef559f7ba1f313ea75a70850f540bd17}{%
+           family={El-Hachem},
+           family_i={E\bibinithyphendelim H\bibinitperiod},
+           given={Nehme},
+           given_i={N\bibinitperiod}}}%
+        {{hash=3bb195d6ea6db0c1df418e2f92f319fc}{%
+           family={Bontempi},
+           family_i={B\bibinitperiod},
+           given={Gianluca},
+           given_i={G\bibinitperiod}}}%
+        {{hash=219737c77284dde2d13b3a26fe4020c6}{%
+           family={Haibe-Kains},
+           family_i={H\bibinithyphendelim K\bibinitperiod},
+           given={Benjamin},
+           given_i={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{a9bae62e72d3f4130b8f9f7fa909a1f0}
+      \strng{fullhash}{773cbba56ab370db73115dd816d820d3}
+      \field{sortinit}{D}
+      \field{sortinithash}{78f7c4753a2004675f316a80bdb31742}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{13674803}
+      \field{journaltitle}{Bioinformatics}
+      \field{number}{18}
+      \field{title}{{MRMRe: An R package for parallelized mRMR ensemble feature selection}}
+      \field{volume}{29}
+      \field{year}{2013}
+      \field{pages}{2365\bibrangedash 2368}
+      \range{pages}{4}
+      \verb{doi}
+      \verb 10.1093/bioinformatics/btt383
+      \endverb
+      \verb{file}
+      \verb :home/fongo/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/De Jay et al. - 2013 - MRMRe An R package for parallelized mRMR ensemble feature selection(12).pdf:pdf
+      \endverb
+    \endentry
+    \entry{autosklearn}{incollection}{}
+      \name{author}{6}{}{%
+        {{hash=2661e0a744cd67c731851c7f1c80d2e2}{%
+           family={Feurer},
+           family_i={F\bibinitperiod},
+           given={Matthias},
+           given_i={M\bibinitperiod}}}%
+        {{hash=6717e0ebad097567de5d341f2cabf54e}{%
+           family={Klein},
+           family_i={K\bibinitperiod},
+           given={Aaron},
+           given_i={A\bibinitperiod}}}%
+        {{hash=554f094deca53cbf5f3f77a28bbb493e}{%
+           family={Eggensperger},
+           family_i={E\bibinitperiod},
+           given={Katharina},
+           given_i={K\bibinitperiod}}}%
+        {{hash=2b4570b1dfe4c0b15751abe6e8cbf4ae}{%
+           family={Springenberg},
+           family_i={S\bibinitperiod},
+           given={Jost},
+           given_i={J\bibinitperiod}}}%
+        {{hash=28c90cdf2ecdb66629343cb5855120e9}{%
+           family={Blum},
+           family_i={B\bibinitperiod},
+           given={Manuel},
+           given_i={M\bibinitperiod}}}%
+        {{hash=528d4af87fd2ecf5fb8a22db913ce088}{%
+           family={Hutter},
+           family_i={H\bibinitperiod},
+           given={Frank},
+           given_i={F\bibinitperiod}}}%
+      }
+      \name{editor}{5}{}{%
+        {{hash=7ace0f703f75865b2add1cb4c55909ea}{%
+           family={Cortes},
+           family_i={C\bibinitperiod},
+           given={C.},
+           given_i={C\bibinitperiod}}}%
+        {{hash=8f87e28885fa1a253eaadafeeb73e581}{%
+           family={Lawrence},
+           family_i={L\bibinitperiod},
+           given={N.\bibnamedelimi D.},
+           given_i={N\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=0beb50eb25818ba13aab0a4b29a04314}{%
+           family={Lee},
+           family_i={L\bibinitperiod},
+           given={D.\bibnamedelimi D.},
+           given_i={D\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=f2ea44ad7988f1351e0c0da3857862bd}{%
+           family={Sugiyama},
+           family_i={S\bibinitperiod},
+           given={M.},
+           given_i={M\bibinitperiod}}}%
+        {{hash=825f90fd818e38383a2e80d4d3331dd4}{%
+           family={Garnett},
+           family_i={G\bibinitperiod},
+           given={R.},
+           given_i={R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Curran Associates, Inc.}%
+      }
+      \strng{namehash}{ef44805f40310be1e2103c3302592390}
+      \strng{fullhash}{24b85ef3877cd90ca886666990cb9241}
+      \field{sortinit}{F}
+      \field{sortinithash}{c6a7d9913bbd7b20ea954441c0460b78}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Advances in Neural Information Processing Systems 28}
+      \field{title}{Efficient and Robust Automated Machine Learning}
+      \field{year}{2015}
+      \field{pages}{2962\bibrangedash 2970}
+      \range{pages}{9}
+      \verb{url}
+      \verb http://papers.nips.cc/paper/5872-efficient-and-robust-automated-machine-learning.pdf
+      \endverb
+    \endentry
+    \entry{Weka2009}{article}{}
+      \name{author}{6}{}{%
+        {{hash=8afb2c93d55a5a48ea1845b23eb996d5}{%
+           family={Hall},
+           family_i={H\bibinitperiod},
+           given={Mark},
+           given_i={M\bibinitperiod}}}%
+        {{hash=14376659b7c222795bf43d1158efbaef}{%
+           family={Frank},
+           family_i={F\bibinitperiod},
+           given={Eibe},
+           given_i={E\bibinitperiod}}}%
+        {{hash=a8cf4cd7abdf3cb3b82ac01950b95778}{%
+           family={Holmes},
+           family_i={H\bibinitperiod},
+           given={Geoffrey},
+           given_i={G\bibinitperiod}}}%
+        {{hash=8d3031672ff9944d1bd83979cee191bb}{%
+           family={Pfahringer},
+           family_i={P\bibinitperiod},
+           given={Bernhard},
+           given_i={B\bibinitperiod}}}%
+        {{hash=1515682a5415208296ec827a5a2f8940}{%
+           family={Reutemann},
+           family_i={R\bibinitperiod},
+           given={Peter},
+           given_i={P\bibinitperiod}}}%
+        {{hash=3aaeade0c5557431ae3db570a34c5094}{%
+           family={Witten},
+           family_i={W\bibinitperiod},
+           given={Ian\bibnamedelima H},
+           given_i={I\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{54381202ca50a480c52cd70b442b2213}
+      \strng{fullhash}{a5a2285df37aed7c48797ddfee5b78db}
+      \field{sortinit}{H}
+      \field{sortinithash}{82012198d5dfa657b8c4a168793268a6}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{ACM SIGKDD explorations newsletter}
+      \field{number}{1}
+      \field{title}{The WEKA data mining software: an update}
+      \field{volume}{11}
+      \field{year}{2009}
+      \field{pages}{10\bibrangedash 18}
+      \range{pages}{9}
+    \endentry
+    \entry{pandas}{misc}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{1}{}{%
+        {{hash=27ca77940a5e8c07c5d89d0f3fb11d75}{%
+           family={McKinney},
+           family_i={M\bibinitperiod},
+           given={Wes},
+           given_i={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{84ea0b50b84c6b830a2c688f901f7d1a}
+      \strng{fullhash}{84ea0b50b84c6b830a2c688f901f7d1a}
+      \field{sortinit}{M}
+      \field{sortinithash}{2684bec41e9697b92699b46491061da2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{addendum}{Version 0.17.1}
+      \field{title}{pandas: Python Data Analysis Library}
+      \verb{url}
+      \verb http://pandas.pydata.org/
+      \endverb
+    \endentry
+    \entry{RapidMiner}{article}{}
+      \name{author}{5}{}{%
+        {{hash=64619189d4b3426405e07a51013afe9d}{%
+           family={{Mierswa}},
+           family_i={M\bibinitperiod},
+           given={I.},
+           given_i={I\bibinitperiod}}}%
+        {{hash=6efc2cab7d47bea717b6039fe93156f9}{%
+           family={{Wurst}},
+           family_i={W\bibinitperiod},
+           given={M.},
+           given_i={M\bibinitperiod}}}%
+        {{hash=dd80e7e739ba22c63064421933bb059e}{%
+           family={{Klinkenberg}},
+           family_i={K\bibinitperiod},
+           given={R.},
+           given_i={R\bibinitperiod}}}%
+        {{hash=41e4e9f288c62b6bef36b33b327af2db}{%
+           family={{Scholz}},
+           family_i={S\bibinitperiod},
+           given={M.},
+           given_i={M\bibinitperiod}}}%
+        {{hash=47398af623994b4bb81baa101bcef857}{%
+           family={{Euler}},
+           family_i={E\bibinitperiod},
+           given={T.},
+           given_i={T\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {{ACM} {P}ress}%
+      }
+      \strng{namehash}{75590d62fa3d2a677d80c8eb06e16bea}
+      \strng{fullhash}{419296624ff6e69adba086ded5e60398}
+      \field{sortinit}{M}
+      \field{sortinithash}{2684bec41e9697b92699b46491061da2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Proceedings of the 12th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining (KDD 2006)}
+      \field{month}{08}
+      \field{title}{{YALE}: {R}apid {P}rototyping for {C}omplex {D}ata {M}ining {T}asks}
+      \field{year}{2006}
+      \field{pages}{935\bibrangedash 940}
+      \range{pages}{6}
+      \verb{url}
+      \verb http://rapid-i.com/component/option,com_docman/task,doc_download/gid,25/Itemid,62/
+      \endverb
+    \endentry
+    \entry{scikit-learn}{article}{}
+      \name{author}{16}{}{%
+        {{hash=22e2e571cc6356b3cb21d40e212ca6ac}{%
+           family={Pedregosa},
+           family_i={P\bibinitperiod},
+           given={F.},
+           given_i={F\bibinitperiod}}}%
+        {{hash=90a0a2720bfe73efd4029f8a456cdcc3}{%
+           family={Varoquaux},
+           family_i={V\bibinitperiod},
+           given={G.},
+           given_i={G\bibinitperiod}}}%
+        {{hash=386dd6e7464b390d92ce58cf04ba101c}{%
+           family={Gramfort},
+           family_i={G\bibinitperiod},
+           given={A.},
+           given_i={A\bibinitperiod}}}%
+        {{hash=ce3bf798cb091d3910827d51160fe0f8}{%
+           family={Michel},
+           family_i={M\bibinitperiod},
+           given={V.},
+           given_i={V\bibinitperiod}}}%
+        {{hash=b8fa2de348731073d50b89e07267e159}{%
+           family={Thirion},
+           family_i={T\bibinitperiod},
+           given={B.},
+           given_i={B\bibinitperiod}}}%
+        {{hash=1c2f66c39a6e2b2ca4d545348028a677}{%
+           family={Grisel},
+           family_i={G\bibinitperiod},
+           given={O.},
+           given_i={O\bibinitperiod}}}%
+        {{hash=f5652799b846fbd40ce19b83c70ef1d3}{%
+           family={Blondel},
+           family_i={B\bibinitperiod},
+           given={M.},
+           given_i={M\bibinitperiod}}}%
+        {{hash=8d2ca4be32fef4d9e848709878fcb757}{%
+           family={Prettenhofer},
+           family_i={P\bibinitperiod},
+           given={P.},
+           given_i={P\bibinitperiod}}}%
+        {{hash=56ac3785f81550a29a28d3abd746ecff}{%
+           family={Weiss},
+           family_i={W\bibinitperiod},
+           given={R.},
+           given_i={R\bibinitperiod}}}%
+        {{hash=cb070bdb80f3a6add15c62ca13a4a419}{%
+           family={Dubourg},
+           family_i={D\bibinitperiod},
+           given={V.},
+           given_i={V\bibinitperiod}}}%
+        {{hash=f1aa9e81c02f406a26762c8c85fdc1fb}{%
+           family={Vanderplas},
+           family_i={V\bibinitperiod},
+           given={J.},
+           given_i={J\bibinitperiod}}}%
+        {{hash=35a7037441ee9fd7ca45c2216a9cb080}{%
+           family={Passos},
+           family_i={P\bibinitperiod},
+           given={A.},
+           given_i={A\bibinitperiod}}}%
+        {{hash=39b253ebe84b96f6acd07b762d251ca1}{%
+           family={Cournapeau},
+           family_i={C\bibinitperiod},
+           given={D.},
+           given_i={D\bibinitperiod}}}%
+        {{hash=3c836162a7c1b02a3454bb2df2c57303}{%
+           family={Brucher},
+           family_i={B\bibinitperiod},
+           given={M.},
+           given_i={M\bibinitperiod}}}%
+        {{hash=980c432be67e1ca5879a0aee315ff2a9}{%
+           family={Perrot},
+           family_i={P\bibinitperiod},
+           given={M.},
+           given_i={M\bibinitperiod}}}%
+        {{hash=ad11ee93370bf63bb64684cfdff0836f}{%
+           family={Duchesnay},
+           family_i={D\bibinitperiod},
+           given={E.},
+           given_i={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{7f03c9665977d16cca3f7d744a8a06df}
+      \strng{fullhash}{81371d66ce2cfb28d217f955948ace55}
+      \field{sortinit}{P}
+      \field{sortinithash}{c0a4896d0e424f9ca4d7f14f2b3428e7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Machine Learning Research}
+      \field{title}{Scikit-learn: Machine Learning in {P}ython}
+      \field{volume}{12}
+      \field{year}{2011}
+      \field{pages}{2825\bibrangedash 2830}
+      \range{pages}{6}
+    \endentry
+  \endsortlist
+\endrefsection
+\endinput
+

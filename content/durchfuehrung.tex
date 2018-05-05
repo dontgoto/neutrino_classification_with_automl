@@ -1,0 +1,55 @@
+\section{Durchführung}
+\label{sec:Durchführung}
+
+In diesem Teil wird auf die verwendeten Methoden des maschinellen Lernens eingegangen sowie die Vorprozessierung der Daten erläutert.
+Für diesen Versuch werden simulierte Signal- und Untergrundereignisse verwendet. 
+Für den Vergleich zwischen den verschiedenen Lernen werden drei verschiedene Lerner verwendet.
+
+
+\subsection{Vorprozessierung}
+\label{sec:vorprozessierung}
+
+Der Zweck der Vorprozessierung ist es die Signal- und Untergrunddaten in einen gemeinsamen Datensatz zu bringen und nicht sinnvoll verwendbare Attribute zu entfernen. 
+Hierzu müssen alle Attribute entfernt werden die nicht in beiden Datensätzen vorkommen. 
+Weiterhin werden alle Monte-Carlo-Wahrheiten und Werte die nicht als Zahl identifiziert werden können (NaN, Inf) entfernt oder ersetzt. 
+Als letztes werden die Daten mit einem binären Label versehen, das bestimmt ob ein Ereignis zu Signal und Untergrund gehört und das als Zielattribut für die Lerner verwendet wird. 
+
+
+\subsection{Attributselektion}
+\label{sec:attselection}
+
+Um die Rechenzeit zu verringern ist es sinnvoll zuerst die Attribute auszuwählen, die dem Lerner eine möglichst gute Unterscheidung zwischen Signal und Untergrund ermöglichen. 
+Für diesen Prozess gibt es mehrere Verfahren, darunter die Vorwärtsauswahl (Forward Selection) und die mRMR-Auswahl (minimum Redundancy, Maximum Relevance). 
+Die Vorwärtsauswahl gibt das bestmögliche Ergebnis, besonders weil es Attribute auswählt die für einen bestimmten Lerner am besten sind, was dafür sorgt, dass die Attributsauswahl nicht verallgemeinerbar ist.
+Die Vorwärtsauswahl ist außerdem mit einer sehr hohen Rechenzeit verbunden und erhöht durch das oft wiederholte Trainieren des Lerners die Gefahr der Überanpassung des Modells an die vorhandenen Daten.
+
+Aus diesem Grund wird in diesem Versuch die mRMR-Auswahl verwendet. 
+Siehe hierzu Kapitel \ref{sec:mRMR}.
+Um die Stabilität der Attributauswahl gegen statistische Schwankungen zu testen wird hierbei der Jaccard-Index verwendet, siehe Kapitel \ref{sec:jaccard}.
+
+
+\subsection{Lernalgorithmen}
+\label{sec:lernalgo}
+
+In diesem Versuch wird als Lerner der RandomForest-Algorithmus (Kapitel \ref{sec:rndforest}), Gradient Boosting (Kapitel \ref{sec:gradient}) und der Naive Bayes-Algorithmus (Kapitel \ref{sec:dernaivebayes}), verwendet. 
+Sie werden in einer Kreuzvalidierung trainiert , um zu zeigen, dass der Lerner auch auf Datensätze angewendet werden kann auf die er nicht trainiert wurde. 
+Hierzu wird der Datensatz in $n$ Teile aufgeteilt und auf $n-1$ von diesen trainiert. Daraufhin wird er auf den letzten Datensatz angewendet um den Lerner zu validieren. 
+Das Vorgehen wird $n$-mal wiederholt, sodass jeder Datensatz einmal zum testen verwendet wird. 
+Zum Überprüfen der Qualität des Lerners werden die Qualitätsparameter aus Kapitel \ref{sec:quali} verwendet.
+
+
+
+
+
+
+
+
+
+%\begin{figure}
+    %%\begin{subfigure}{.5\textwidth}
+  %\centering
+  %\includegraphics[width=0.80\textwidth]{}
+  %\caption{.}
+  %\label{fig1}
+%%\end{subfigure}
+%\end{figure}

@@ -1,0 +1,58 @@
+\input{header.tex}
+
+\newcommand{\bra}[1]{\langle #1 \rvert}
+\newcommand{\ket}[1]{\lvert #1 \rangle}
+%\newcommand{\liminf}[1]{\lim _{ #1 \to \infty} }
+\newcommand{\dd}[2]{\frac{\mathrm{d} #1 }{\mathrm{d} #2 } }
+\newcommand{\ddd}[2]{\frac{\mathrm{d}^2 #1}{\mathrm{d} #2 ^2} }
+\newcommand{\pp}[2]{\frac{\mathrm{\partial} #1 }{\mathrm{\partial}#2 } }
+\newcommand{\ppp}[2]{\frac{\mathrm{\partial}^2 #1 }{\mathrm{\partial} #2 ^2} }
+\newcommand{\rvec}{\vec{r}}
+\newcommand{\xvec}{\vec{x}}
+\newcommand{\pvec}{\vec{p}}
+\newcommand{\kvec}{\vec{k}}
+\newcommand{\vvec}{\vec{v}}
+%\newcommand{\dV}{\mathrm{d}V}
+%\newcommand{\dA}{\mathrm{d}A}
+%\newcommand{\dr}{\mathrm{d}r}
+%\newcommand{\drvec}{\mathrm{d}\vec{r}}
+%\newcommand{\dx}{\mathrm{d}x}
+%\newcommand{\dy}{\mathrm{d}y}
+%\newcommand{\dz}{\mathrm{d}z}
+%\newcommand{\dt}{\mathrm{d}t}
+%\newcommand{\dphi}{\mathrm{d}\phi}
+%\newcommand{\dtheta}{\mathrm{d}\theta}
+%\newcommand{\domega}{\mathrm{d}\omega}
+%\newcommand{\rezi}[1]{\frac{1}{#1}
+%\newcommand{\psirt}{\psi (\vec{r}, t)}
+%\newcommand{\psirtav}{|\psi (\vec{r}, t)|^2}
+\newcommand{\intzi}{\int _0 ^\infty}
+\newcommand{\intii}{\int _{-\infty} ^\infty}
+%\newcommand{\intmii}{\int _\infty ^\infty}
+%\newcommand{\intmizero}{\int _\infty ^\infty}
+
+%%% Hier definiert man Titel, Autor und Datum %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subject{E5b Lehrstuhlversuch}
+\title{Datenanalyse mit IceCube-Monte-Carlo Simulationsdaten}
+\date{
+  Durchführung: 14.09.2016
+  \hspace{3em}
+  Abgabe: 22.09.2016
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+\tableofcontents
+\newpage
+
+\input{content/theorie.tex}
+\input{content/durchfuehrung.tex}
+\input{content/auswertung.tex}
+\input{content/diskussion.tex}
+\printbibliography
+
+\end{document}
